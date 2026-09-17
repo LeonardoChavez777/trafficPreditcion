@@ -10,6 +10,9 @@ features = joblib.load(FEATURES_PATH)  # Carga las 22 features en el orden corre
 
 
 def create_features(df):
+
+    df = df.copy()  # Evita modificar el DataFrame original
+    
     df["lag_1"] = df["773869"].shift(1)  # Velocidad de hace 5 minutos
     df["lag_2"] = df["773869"].shift(2)  # Velocidad de hace 10 minutos
     df["lag_3"] = df["773869"].shift(3)  # Velocidad de hace 15 minutos
